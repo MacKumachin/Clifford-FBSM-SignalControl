@@ -45,15 +45,14 @@ def main():
     curvature = np.linalg.norm(np.gradient(f), axis=0)
     np.save("curvature_final.npy", curvature)
 
-    # Save final curvature image
+# Save final curvature image
 import matplotlib.pyplot as plt
 if curvature.ndim == 2:
     plt.imshow(curvature, cmap="viridis")
     plt.colorbar()
 else:
     plt.plot(curvature)
-plt.title("Curvature (Final)")
-plt.savefig("curvature_final.png")
+    plt.title("Curvature (Final)")
 
 plt.savefig("curvature_final.png")
 

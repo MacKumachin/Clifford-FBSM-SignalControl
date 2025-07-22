@@ -51,7 +51,7 @@ import matplotlib.pyplot as plt
 
 plt.figure()
 if curvature_2d.ndim == 2:
-    plt.imshow(curvature_2d, cmap="viridis", aspect="auto")
+    plt.imshow(curvature_2d, cmap="viridis", aspect="auto")  # ✅ 修正済
     plt.colorbar()
 else:
     plt.plot(curvature_2d)

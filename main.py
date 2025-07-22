@@ -37,12 +37,12 @@ def main():
     np.save("curvature_over_time.npy", np.array(curvature_evolution))
     np.save("f_final.npy", f)
 
-    # ✅ Curvature image from final f
+    # Curvature image from final f
     grad_x, grad_y = np.gradient(f)
     curvature = np.sqrt(grad_x**2 + grad_y**2)  # shape (32, 32)
     np.save("curvature_final.npy", curvature)
 
-    # ✅ Plot curvature image
+    # Plot curvature image
     plt.figure()
     plt.imshow(curvature, cmap="viridis", aspect="auto")
     plt.colorbar()

@@ -42,7 +42,7 @@ def main():
     np.save("f_final.npy", f)
 
     # Save final curvature (dummy as Laplacian)
-    curvature = np.abs(np.gradient(f)[0][0])
+    curvature = np.linalg.norm(np.gradient(f), axis=0)
     np.save("curvature_final.npy", curvature)
 
     # Save final curvature image

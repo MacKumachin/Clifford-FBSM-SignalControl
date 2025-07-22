@@ -46,9 +46,10 @@ def main():
     np.save("curvature_final.npy", curvature)
 
     # Save final curvature image
-    import matplotlib.pyplot as plt
-    plt.imshow(curvature, cmap="viridis")
-    plt.savefig("curvature_final.png")
+import matplotlib.pyplot as plt
+plt.plot(curvature)  # ← ここを変更
+plt.savefig("curvature_final.png")
+
 
     print("[main] Simulation complete. Output saved.")
 

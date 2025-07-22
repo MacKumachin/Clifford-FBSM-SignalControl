@@ -34,6 +34,9 @@ def main():
 
     # Save rank evolution
     np.save("rank_over_time.npy", np.array(rank_evolution))
+@np.save("rank_over_time.npy", rank_list)
+@np.save("f_final.npy", f)
+@np.save("curvature_final.npy", curvature)
 
     # Save final curvature (dummy as Laplacian)
     curvature = np.abs(np.gradient(np.gradient(f)[0])[0])

@@ -1,4 +1,3 @@
-
 import json
 import numpy as np
 from forward import solve_forward
@@ -16,7 +15,7 @@ def main():
     threshold = config["threshold"]
 
     # Dummy initial state, connection A, and control u
-    f0 = np.random.randn(32, 32)
+    f0 = np.random.rand(32, 32)
     A = np.zeros_like(f0)
     u = np.zeros_like(f0)
 
@@ -33,31 +32,25 @@ def main():
         rank_evolution.append(rank)
 
     # Save rank evolution
-np.save("rank_over_time.npy", np.array(rank_evolution))
+    np.save("rank_over_time.npy", np.array(rank_evolution))
 
-# Save curvature evolution
-curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
-np.save("curvature_over_time.npy", np.array(curvature_evolution))
+    # Save curvature evolution
+    curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
+    np.save("curvature_over_time.npy", np.array(curvature_evolution))
 
-# Save final f after last loop
-f_final = f
-np.save("f_final.npy", f_final)
+    # Save final state f
+    np.save("f_final.npy", f)
 
-# Save final curvature (dummy as Laplacian)
-curvature = np.abs(np.gradient(f)[0][0])
-np.save("curvature_final.npy", curvature)
+    # Save final curvature (dummy as Laplacian)
+    curvature = np.abs(np.gradient(f)[0][0])
+    np.save("curvature_final.npy", curvature)
 
-# Save final curvature image
-import matplotlib.pyplot as plt
-plt.imshow(curvature, cmap="viridis")
-plt.savefig("curvature_final.png")
+    # Save final curvature image
+    import matplotlib.pyplot as plt
+    plt.imshow(curvature, cmap="viridis")
+    plt.savefig("curvature_final.png")
 
-
-
-print("[main] Simulation complete. Output saved.")
-
-
-
+    print("[main] Simulation complete. Output saved.")
 
 if __name__ == "__main__":
     main()

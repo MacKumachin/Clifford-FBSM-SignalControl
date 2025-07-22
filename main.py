@@ -41,11 +41,7 @@ def main():
     # Save final state f
     np.save("f_final.npy", f)
 
-    # Save final curvature (dummy as Laplacian)
-    curvature = np.linalg.norm(np.gradient(f), axis=0)
-    np.save("curvature_final.npy", curvature)
-
-# Save final curvature image
+   # Save final curvature image
 import matplotlib.pyplot as plt
 if curvature.ndim == 2:
     plt.imshow(curvature, cmap="viridis")
@@ -53,8 +49,8 @@ if curvature.ndim == 2:
 else:
     plt.plot(curvature)
     plt.title("Curvature (Final)")
-
 plt.savefig("curvature_final.png")
+
 
 
     print("[main] Simulation complete. Output saved.")

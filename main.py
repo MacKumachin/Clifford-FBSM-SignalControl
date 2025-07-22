@@ -43,12 +43,14 @@ def main():
 
    # Save final curvature image
 import matplotlib.pyplot as plt
+
+plt.figure()
 if curvature.ndim == 2:
     plt.imshow(curvature, cmap="viridis")
     plt.colorbar()
 else:
     plt.plot(curvature)
-    plt.title("Curvature (Final)")
+plt.title("Curvature (Final)")
 plt.savefig("curvature_final.png")
 
 

@@ -39,8 +39,9 @@ np.save("rank_over_time.npy", np.array(rank_evolution))
 curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
 np.save("curvature_over_time.npy", np.array(curvature_evolution))
 
-# Save final state f
-np.save("f_final.npy", f)
+# Save final f after last loop
+f_final = f
+np.save("f_final.npy", f_final)
 
 # Save final curvature (dummy as Laplacian)
 curvature = np.abs(np.gradient(f)[0][0])

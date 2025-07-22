@@ -48,16 +48,18 @@ curvature_2d = curvature[:, np.newaxis]  # shape (32, 1)
 # Save
 np.save("curvature_final.npy", curvature_2d)
 
-# Plot
-import matplotlib.pyplot as plt
-plt.figure()
-if curvature_2d.ndim == 2:
-    plt.imshow(curvature_2d, cmap="viridis", aspect="auto")
+    # Compute and save curvature image
+    grad_x, grad_y = np.gradient(f)
+    curvature = np.sqrt(grad_x**2 + grad_y**2)
+    np.save("curvature_final.npy", curvature)
+
+    # Plot
+    import matplotlib.pyplot as plt
+    plt.figure()
+    plt.imshow(curvature, cmap="viridis", aspect="auto")
     plt.colorbar()
-else:
-    plt.plot(curvature_2d)
-plt.title("Curvature (Final)")
-plt.savefig("curvature_final.png")
+    plt.title("Curvature (Final)")
+    plt.savefig("curvature_final.png")
 
 
 

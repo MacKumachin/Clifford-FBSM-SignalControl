@@ -41,9 +41,9 @@ def main():
     # Save final state f
     np.save("f_final.npy", f)
 
-# Save final curvature (make sure it is 2D)
-curvature = np.abs(np.gradient(f)[0])  # shape (32,)
-curvature_2d = curvature[:, np.newaxis]  # shape (32, 1)
+# Save final curvature
+curvature = np.abs(np.gradient(f)[0])     # shape (32,)
+curvature_2d = curvature[:, np.newaxis]   # shape (32, 1)
 np.save("curvature_final.npy", curvature_2d)
 
 # Save final curvature image
@@ -51,12 +51,13 @@ import matplotlib.pyplot as plt
 
 plt.figure()
 if curvature_2d.ndim == 2:
-    plt.imshow(curvature_2d, cmap="viridis", aspect="auto")  # ✅ 修正済
+    plt.imshow(curvature_2d, cmap="viridis", aspect="auto")  # ✅ ← ここ重要！
     plt.colorbar()
 else:
     plt.plot(curvature_2d)
 plt.title("Curvature (Final)")
 plt.savefig("curvature_final.png")
+
 
 
 

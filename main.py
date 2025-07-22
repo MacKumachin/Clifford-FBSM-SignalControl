@@ -40,7 +40,7 @@ def main():
     curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
     np.save("curvature_over_time.npy", np.array(curvature_evolution))
 
-   # Save final curvature (dummy as Laplacian)
+  # Save final curvature (dummy as Laplacian)
 curvature = np.abs(np.gradient(f)[0][0])
 np.save("curvature_final.npy", curvature)
 
@@ -50,6 +50,7 @@ plt.imshow(curvature, cmap="viridis")
 plt.savefig("curvature_final.png")
 
 print("[main] Simulation complete. Output saved.")
+
 
 
 

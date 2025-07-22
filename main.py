@@ -34,15 +34,18 @@ def main():
 
     # Save rank evolution
     np.save("rank_over_time.npy", np.array(rank_evolution))
-    np.save("rank_over_time.npy", rank_list)
     np.save("f_final.npy", f)
-    np.save("curvature_final.npy", curvature)
+
+    # Save curvature evolution
+    curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
+    np.save("curvature_over_time.npy", np.array(curvature_evolution))
 
     # Save final curvature (dummy as Laplacian)
-    curvature = np.abs(np.gradient(np.gradient(f)[0])[0])
-    np.save("final_curvature.npy", curvature)
+    curvature = np.abs(np.gradient(f)[0][0])
+    np.save("curvature_final.npy", curvature)
 
     print("[main] Simulation complete. Output saved.")
+
 
 if __name__ == "__main__":
     main()

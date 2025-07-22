@@ -33,14 +33,13 @@ def main():
         rank_evolution.append(rank)
 
     # Save rank evolution
-    np.save("rank_over_time.npy", np.array(rank_evolution))
-    np.save("f_final.npy", f)
+np.save("rank_over_time.npy", np.array(rank_evolution))
 
-    # Save curvature evolution
-    curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
-    np.save("curvature_over_time.npy", np.array(curvature_evolution))
+# Save curvature evolution
+curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
+np.save("curvature_over_time.npy", np.array(curvature_evolution))
 
-  # Save final state f
+# Save final state f
 np.save("f_final.npy", f)
 
 # Save final curvature (dummy as Laplacian)

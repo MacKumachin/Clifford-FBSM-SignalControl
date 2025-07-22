@@ -31,18 +31,18 @@ def main():
         rank = compute_rank(f, threshold)
         rank_evolution.append(rank)
 
-    # Save outputs
+    # Save rank and curvature evolution
     np.save("rank_over_time.npy", np.array(rank_evolution))
     curvature_evolution = [np.linalg.norm(f_) for f_ in rank_evolution]
     np.save("curvature_over_time.npy", np.array(curvature_evolution))
     np.save("f_final.npy", f)
 
-    # ✅ curvature計算（2D）
+    # ✅ Curvature image from final f
     grad_x, grad_y = np.gradient(f)
-    curvature = np.sqrt(grad_x**2 + grad_y**2)  # shape: (32, 32)
+    curvature = np.sqrt(grad_x**2 + grad_y**2)  # shape (32, 32)
     np.save("curvature_final.npy", curvature)
 
-    # ✅ プロット処理
+    # ✅ Plot curvature image
     plt.figure()
     plt.imshow(curvature, cmap="viridis", aspect="auto")
     plt.colorbar()

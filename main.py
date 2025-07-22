@@ -49,6 +49,7 @@ import matplotlib.pyplot as plt
 plt.imshow(curvature, cmap="viridis")
 plt.savefig("curvature_final.png")
 
+
 print("[main] Simulation complete. Output saved.")
 
 
